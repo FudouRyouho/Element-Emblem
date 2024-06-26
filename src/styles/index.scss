@@ -1,0 +1,388 @@
+:root {
+  --background: #23242a;
+  --backgroundTransparent: rgb(35, 36, 42, 0.4);
+  --backgroundOnTransparent: rgb(35, 36, 42, 0.8);
+}
+
+body {
+  background-color: var(--background);
+  color: white;
+  background-image: url(https://images3.alphacoders.com/133/1338125.png);
+  margin: 0 auto;
+}
+
+.inventory {
+  border: 1px solid white;
+  background-color: var(--backgroundTransparent);
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.inventory-slot {
+  background-color: var(--backgroundTransparent);
+  margin: 5px;
+  border: 1px solid white;
+}
+
+.inventory-slot .icon {
+  padding: 5px;
+}
+
+.inventory-slot:hover {
+  border: 1px solid blue;
+}
+
+svg {
+  fill-rule: evenodd;
+  height: 100%;
+}
+
+.svg-inline--fa {
+  height: 100%;
+}
+
+@keyframes rarityHover {
+  0% {
+    background-position: 50% 0%;
+  }
+
+  50% {
+    background-position: 50% 100%;
+  }
+
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+.common {
+  color: #DDDDDD;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(221, 221, 221, 0.2) 55%,
+      rgba(221, 221, 221, 0.25) 70%);
+
+}
+
+.common:hover {
+  color: #DDDDDD;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(221, 221, 221, 0.2),
+      rgba(221, 221, 221, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+
+.uncommon {
+  color: #6F818F;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(111, 129, 143, 0.2) 55%,
+      rgba(111, 129, 143, 0.25) 70%);
+}
+
+.uncommon:hover {
+  color: #6F818F;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(111, 129, 143, 0.2),
+      rgba(111, 129, 143, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+
+.rare {
+  color: #1C64D9;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(28, 100, 217, 0.2) 55%,
+      rgba(28, 100, 217, 0.25) 70%);
+}
+
+.rare:hover {
+  color: #1C64D9;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(28, 100, 217, 0.2),
+      rgba(28, 100, 217, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+
+.magic {
+  color: #9F00B8;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(159, 0, 184, 0.2) 55%,
+      rgba(159, 0, 184, 0.25) 70%);
+}
+
+.magic:hover {
+  color: #9F00B8;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(159, 0, 184, 0.2),
+      rgba(159, 0, 184, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+
+.epic {
+  color: #8700E0;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(135, 0, 224, 0.2) 55%,
+      rgba(135, 0, 224, 0.25) 70%);
+}
+
+.epic:hover {
+  color: #8700E0;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(135, 0, 224, 0.2),
+      rgba(135, 0, 224, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+
+.legendary {
+  color: #F1B604;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(241, 182, 4, 0.2) 55%,
+      rgba(241, 182, 4, 0.25) 70%);
+}
+
+.legendary:hover {
+  color: #F1B604;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(241, 182, 4, 0.2),
+      rgba(241, 182, 4, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+
+.mystic {
+  color: #DE2817;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(222, 40, 23, 0.2) 55%,
+      rgba(222, 40, 23, 0.25) 70%);
+}
+
+.mystic:hover {
+  color: #DE2817;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(222, 40, 23, 0.2),
+      rgba(222, 40, 23, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+
+.divine {
+  color: #FFDB70;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 219, 112, 0.2) 55%,
+      rgba(255, 219, 112, 0.25) 70%);
+}
+
+.divine:hover {
+  color: #FFDB70;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 219, 112, 0.2),
+      rgba(255, 219, 112, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+
+.celestial {
+  color: #00E0E0;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 224, 244, 0.2) 55%,
+      rgba(0, 224, 244, 0.25) 70%);
+}
+
+.celestial:hover {
+  color: #00E0E0;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0),
+      rgba(0, 224, 244, 0.2),
+      rgba(0, 224, 244, 0.25));
+  background-size: 200% 200%;
+  animation: rarityHover 1s ease;
+}
+.right-separator {
+  background-color: black;
+  height: 1000px;
+  width: 20px;
+  top: 0px;
+  right: 0px;
+  position: absolute;}
+
+.item .details {
+  border: 2px solid white;
+  background-color: var(--backgroundOnTransparent);
+  position: absolute;
+  margin-right: 10px;
+}
+
+.item .details .body {
+  padding: 15px;
+  background-color: var(--backgroundTransparent);
+}
+
+.item .details .body .name {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bolder;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid white;
+}
+
+.item .details .body .type-rarity {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.item .details .body .type-rarity .type {
+  color: white;
+  font-size: 14px;
+}
+
+.item .details .body .type-rarity .rarity {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.item .details .body .stats-elementalStats {
+  display: grid;
+  grid-auto-columns: min-content min-content;
+  grid-template-columns: 1fr 1fr;
+}
+
+.item .details .body .stats-elementalStats .stat,
+.item .details .body .stats-elementalStats .elemental-stat,
+.item .details .body .unique-abilities,
+.item .details .body .abilities-enhancers {
+  border: 1px solid white;
+  padding: 3px 3px 7px 3px;
+}
+
+.item .details .body .stats-elementalStats .stat .stat-body,
+.item .details .body .stats-elementalStats .elemental-stat .elemental-stat-body {
+  display: grid;
+  grid-auto-columns: min-content min-content;
+  grid-template-columns: min-content min-content min-content min-content;
+  grid-gap: 5px;
+  margin: 0px auto 0px auto;
+}
+
+.item .details .body .unique-abilities .unique-abilities-body,
+.item .details .body .abilities-enhancers .abilities-enhancers-body {
+  display: grid;
+  grid-auto-columns: min-content min-content;
+  grid-template-columns: 1fr 1fr;
+}
+
+.item .details .body .stats-elementalStats .stat .stat-title,
+.item .details .body .stats-elementalStats .elemental-stat .elemental-stat-title,
+.item .details .body .unique-abilities .unique-abilities-title,
+.item .details .body .abilities-enhancers .abilities-enhancers-title {
+  margin: 0px 0px 5px 0px !important;
+  font-size: 12px;
+}
+
+.item .details .body .stats-elementalStats .stat .stat-body .attribute.icon,
+.item .details .body .stats-elementalStats .elemental-stat .elemental-stat-body .attribute.icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  border: 1px solid white;
+  margin: 2px;
+}
+
+.item .details .body .unique-abilities .unique-abilities-body .ability.icon,
+.item .details .body .abilities-enhancers .abilities-enhancers-body .ability.icon {
+  display: grid;
+  grid-auto-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px 3px;
+  grid-template-areas:
+    "icon name"
+    "description description";
+  color: white;
+  border: 1px solid white;
+  margin: 2px;
+}
+
+.item .details .body .stats-elementalStats .stat .stat-body .attribute.icon svg,
+.item .details .body .stats-elementalStats .elemental-stat .elemental-stat-body .attribute.icon svg {
+  margin: 5px;
+}
+
+.item .details .body .unique-abilities .unique-abilities-body .ability.icon svg,
+.item .details .body .abilities-enhancers .abilities-enhancers-body .ability.icon svg {
+  margin: 5px;
+  grid-area: icon;
+}
+
+.item .details .body .unique-abilities .unique-abilities-body .name,
+.item .details .body .abilities-enhancers .abilities-enhancers-body .name {
+  font-size: 12px;
+  margin: 3px;
+  margin-bottom: 11px;
+  font-weight: bolder;
+  color: white;
+  grid-area: name;
+}
+
+.item .details .body .unique-abilities .unique-abilities-body .ability.icon .description,
+.item .details .body .abilities-enhancers .abilities-enhancers-body .ability.icon .description {
+  font-size: 12px;
+  margin: 3px;
+  margin-bottom: 11px;
+  font-weight: bolder;
+  color: white;
+  grid-area: description;
+}
+
+.item .details .body .stats-elementalStats .stat .stat-body .attribute.icon .value,
+.item .details .body .stats-elementalStats .elemental-stat .elemental-stat-body .attribute.icon .value {
+  font-size: 12px;
+  margin: 3px;
+  margin-bottom: 11px;
+  font-weight: bolder;
+  color: white;
+}
+
+.item .details.extended {
+z-index: 1;}
+.item .details.extended .background{
+  border: none !important;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: var(--backgroundTransparent);
+  z-index: -1;
+}
+
+.item .details.extended .close {
+  height: 1em;
+  top: 0px;
+  right: 0px;
+  margin: 7px 4px 0px 0px;
+  position: absolute}

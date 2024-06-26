@@ -1,0 +1,53 @@
+
+  
+
+  
+
+  
+
+
+
+
+  .item svg {
+    margin: 10px;
+    width: max-content;
+    height: max-content;
+  }
+
+  .details svg {
+    top: -5px;
+    right: -5px;
+    position: absolute;
+  }
+  .details svg:hover {
+    color: white;
+  }
+  
+  .details.extended {
+    border: none !important;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: var(--backgroundTransparent);
+  }
+
+  
+
+  
+  .stat .attribute {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffe599;
+  }
+  .stat .attribute svg {
+    position: relative;
+  }
+  .stat .attribute .value {
+    position: absolute;
+    font-size: 12px;
+  color: white}
+
+  

@@ -1,50 +1,62 @@
-import React from "react";
-import { useSelector } from "react-redux";
+//src\modules\layout\components\common\Inventory.tsx
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import InventorySlot from "./inventory.slot";
-import { RootState } from "../../../../state/store";
-import { Equipment } from "../../../common/components/base/Equipment";
-import { generateEquipment } from "../../../common/components/base/generate/equipmentGenerator";
-
+import { addInventory } from "../../../inventory/actions/inventory.actions";
+import { IInventory, IInventorySection } from "../../../inventory/state/inventory.state";
 interface IProps {
-  slotCount?: number;
+  id: string;
+  sections: string[];
+  items?: { [section: string]: any[] };
 }
 
-const Inventory: React.FC<IProps> = ({ slotCount = 20 }) => {
-  const titleTap = useSelector((state: RootState) => state.layout.inventoryTap);
 
-  const rarities = [
-    "common",
-    "uncommon",
-    "rare",
-    "magic",
-    "epic",
-    "legendary",
-    "mystic",
-    "divine",
-    "celestial",
-  ];
+const Inventory: React.FC<IProps> = ({ id, sections, items }) => {
+  const dispatch = useDispatch();
 
-  const itemsGenerate: Equipment[] = Array.from({ length: slotCount }, () => {
-    const rarity = rarities[Math.floor(Math.random() * rarities.length)];
-    return generateEquipment(rarity);
-  });
+  useEffect(() => {
+    const newInventory: IInventory = {
+      id: id,
+      sections: sections.reduce((acc, section) => {
+        acc[section] = {
+          id: `${id}-${section}`,
+          items: items ? items[section] || [] : [],
+          slotCount: 10,
+        };
+        return acc;
+      }, {} as { [key: string]: IInventorySection }),
+    };
 
+    dispatch(addInventory(newInventory));
+  }, []);
 
-  const slots = itemsGenerate.map((item, index) => ({
-    id: `slot-${index + 1}`,
-    item,
-  }));
+  
+  return (<>
+  <p>{id}</p>
+    <div className="inventory-tabs">
+    {sections.map((section, index) => (
+      <button key={`${id}-tab-${index}`} className={section.toLowerCase()}>
+        {section}
+      </button>
+    ))}
+  </div>
+    <div id={id} className={`inventory ${id}`}>
 
-  return (
-    <>
-      <p>{titleTap}</p>
-      <div className="inventory">
-        {slots.map((slot) => (
-          <InventorySlot key={slot.id} id={slot.id} item={slot.item} />
-        ))}
-      </div>
+        {sections.map((section) =>
+          items &&
+          items[section]?.map((item, slotIndex) => (
+            <InventorySlot
+              key={`${id}-${section}-${slotIndex}`}
+              id={`${id}-${section}-${slotIndex}`}
+              item={item}
+              from={id}
+            />
+          ))
+        )}
+    </div>
     </>
   );
 };
+
 
 export default Inventory;

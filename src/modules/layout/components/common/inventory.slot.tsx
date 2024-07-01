@@ -6,12 +6,13 @@ import { Equipment } from "../../../common/components/base/Equipment";
 interface IProps {
     id: string;
     item?: Equipment;
+    from: string;
   }
   
-  const InventorySlot: React.FC<IProps> = ({ id, item }) => {
+  const InventorySlot: React.FC<IProps> = ({ id, item, from }) => {
     return (
         <div className={`inventory-slot ${item?.rarity}`} id={id}>
-            {item ? <ItemComponent  equipment={item} /> : "Empty"}
+            {item ? <ItemComponent  equipment={item} section="Equipment" from={from}/> : "Empty"}
         </div>
     );
 };

@@ -1,10 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { LayoutReducer } from '../modules/layout/state/Layout.reducer';
+
+import { configureStore, EnhancedStore  } from '@reduxjs/toolkit';
+import { composeWithDevTools } from '@redux-devtools/extension';
+import { inventoryReducer } from '../modules/inventory/state/Inventory.reducer';
+
 
 const store = configureStore({
-    reducer:  {
-        layout: LayoutReducer,
+    reducer: {
+        inventory: inventoryReducer,
     },
+    devTools: true,
 });
 
 export default store;

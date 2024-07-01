@@ -27,6 +27,13 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/,  // Para archivos CSS
+        use: [
+          'style-loader', // Inyecta CSS en el DOM
+          'css-loader'    // Interpreta @import y url() como importaciones de ESModules
+        ],
+      },
     ],
   },
   devServer: {

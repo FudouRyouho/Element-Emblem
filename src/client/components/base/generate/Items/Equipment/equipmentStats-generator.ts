@@ -1,5 +1,5 @@
 //src\modules\common\components\base\generate\equipmentStats-generator.ts
-import { Stats, ElementalStats } from "../Stats";
+import { Stats, ElementalStats } from "../../../Stats";
 import { statDefinitions ,ElementalStatsDefinition,fireStatsDefinition,waterStatsDefinition,windStatsDefinition,earthStatsDefinition } from "./equipmentStats-definitions";
 
 export const generateStats = (minStats: number, maxStats: number): Stats => {

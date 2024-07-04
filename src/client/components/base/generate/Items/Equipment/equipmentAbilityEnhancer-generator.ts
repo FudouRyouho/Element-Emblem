@@ -1,4 +1,4 @@
-import { AbilityEnhancer } from "../Ability";
+import { AbilityEnhancer } from "../../../Ability";
 import { fireAbilityEnhancers,waterAbilityEnhancers,windAbilityEnhancers,earthAbilityEnhancers } from "./equipmentAbilityEnhancer-definitions";
 
 export const generateAbilityEnhancers = (minStats: number, maxStats: number, elementType:string): AbilityEnhancer[] => {

@@ -1,4 +1,4 @@
-import { Equipment } from "../../Equipment";
+import { Equipment } from "../../../../Equipment";
 import { generateEquipment } from "../equipmentGenerator";
 
 const rarities = [

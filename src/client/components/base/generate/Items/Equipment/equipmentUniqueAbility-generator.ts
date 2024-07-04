@@ -1,5 +1,5 @@
 // equipmentUniqueAbility-generator.ts
-import { UniqueAbility } from "../Ability";
+import { UniqueAbility } from "../../../Ability";
 import { fireAbilities, waterAbilities, windAbilities, earthAbilities } from "./equipmentUniqueAbility-definitions";
 
 export const generateUniqueAbilities = (minStats: number, maxStats: number, elementType: string): UniqueAbility[] => {

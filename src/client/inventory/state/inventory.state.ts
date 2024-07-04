@@ -1,5 +1,5 @@
 //src\client\inventory\state\inventory.state.ts
-import { generateShopItems } from "../../../client/components/base/generate/testing/generateShopItems";
+import { generateShopItems } from "../../components/base/generate/Items/Equipment/testing/generateShopItems";
 export interface IInventorySection {
   id: string;
   items: any[];

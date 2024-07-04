@@ -7,7 +7,7 @@ import {
   MysticEquipment,
   DivineEquipment,
   CelestialEquipment,
-} from "../Equipment";
+} from "../../../Equipment";
 
 
 import { generateStats, generateElementalStats } from "./equipmentStats-generator";

@@ -6,7 +6,7 @@ import {updateInventory  } from "../actions/inventory.actions";
 import { RootState } from "../../state/store";
 import { cloneDeep } from 'lodash';
 import { useInventoryLoader } from "../hooks/useInventoryLoader";
-import { generateShopItems } from "../../components/base/generate/testing/generateShopItems";
+import { generateShopItems } from "../../components/base/generate/Items/Equipment/testing/generateShopItems";
 
 
 interface IProps {

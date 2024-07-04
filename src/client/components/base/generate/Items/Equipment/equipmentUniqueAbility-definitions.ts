@@ -1,5 +1,5 @@
 //src\modules\common\components\base\generate\equipmentUniqueAbility-definitions.ts
-import { UniqueAbility } from "../Ability";
+import { UniqueAbility } from "../../../Ability";
 
 export const fireAbilities: UniqueAbility[] = [
   { id: "fire-ability-1", name: "Fireball", description: "Deals fire damage to enemies",icon: 'fire', },

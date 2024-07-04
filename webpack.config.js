@@ -1,8 +1,11 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+//webpack.config.js
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
-  entry: './src/index.tsx',
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
+export default {
+  entry: './src/client/index.tsx',
   mode: 'development',
   output: {
     filename: 'bundle.js',
@@ -15,23 +18,23 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        loader: 'ts-loader',
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,  // Para archivos SCSS
+        test: /\.scss$/,
         use: [
-          'style-loader', // Inyecta CSS en el DOM
-          'css-loader',   // Interpreta @import y url() como importaciones de ESModules
-          'sass-loader'   // Carga y compila SCSS a CSS
+          'style-loader',
+          'css-loader', 
+          'sass-loader'
         ],
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,  // Para archivos CSS
+        test: /\.css$/,
         use: [
-          'style-loader', // Inyecta CSS en el DOM
-          'css-loader'    // Interpreta @import y url() como importaciones de ESModules
+          'style-loader',
+          'css-loader'
         ],
       },
     ],
@@ -45,7 +48,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: './src/client/index.html',
     }),
   ],
 };

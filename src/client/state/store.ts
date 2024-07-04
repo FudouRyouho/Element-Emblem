@@ -1,8 +1,6 @@
 
 import { configureStore, EnhancedStore  } from '@reduxjs/toolkit';
-import { composeWithDevTools } from '@redux-devtools/extension';
-import { inventoryReducer } from '../modules/inventory/state/Inventory.reducer';
-
+import { inventoryReducer } from '../inventory/state/Inventory.reducer';
 
 const store = configureStore({
     reducer: {

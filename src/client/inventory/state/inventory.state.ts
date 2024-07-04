@@ -1,22 +1,19 @@
-// src/modules/inventory/state/inventory.state.ts
-
-import { generateShopItems } from "../../common/components/base/generate/testing/generateShopItems";
-// Interface para una sección de inventario
+//src\client\inventory\state\inventory.state.ts
+import { generateShopItems } from "../../../client/components/base/generate/testing/generateShopItems";
 export interface IInventorySection {
   id: string;
   items: any[];
   slotCount: number;
 }
 
-// Interface para un inventario completo
 export interface IInventory {
+  save: boolean;
   id: string;
   sections: {
     [key: string]: IInventorySection;
   };
 }
 
-// Interface para el estado de inventario global en la aplicación
 export interface IInventoryState {
   inventories: {
     [key: string]: IInventory;
@@ -25,6 +22,7 @@ export interface IInventoryState {
 
 const generatePlayerInventory = (): IInventory => ({
   id: 'Player',
+  save: true,
   sections: {
     'Equipment': {
       id: 'equipment',
@@ -46,20 +44,21 @@ const generatePlayerInventory = (): IInventory => ({
 });
 const generateShopInventory = (): IInventory => ({
   id: 'Shop',
+  save: false,
   sections: {
     'Equipment': {
       id: 'equipment',
-      items: generateShopItems(20), // Genera ítems dinámicamente
-      slotCount: 20,
+      items: generateShopItems(5), // Genera ítems dinámicamente
+      slotCount: 10,
     },
     'Materials': {
       id: 'materials',
-      items: [],
+      items: generateShopItems(10),
       slotCount: 20,
     },
     'Consumables': {
       id: 'consumables',
-      items: [],
+      items: generateShopItems(15),
       slotCount: 20,
     },
     // Agrega más secciones según sea necesario

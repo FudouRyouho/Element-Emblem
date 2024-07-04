@@ -1,7 +1,7 @@
 //F:\Development\web\Game\RPG\Element rpg\src\modules\tooltips\customPopover\inventory-popover.tsx
 import React from "react";
-import { Equipment } from "../../common/components/base/Equipment";
-import { UI, items, Stats } from "../../common/components/icons";
+import { Equipment } from "../../../client/components/base/Equipment";
+import { UI, items, Stats } from "../../../client/components/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface IProps {

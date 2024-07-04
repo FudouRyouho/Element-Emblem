@@ -1,16 +1,17 @@
+//tsconfig.json
 {
     "compilerOptions": {
-      "target": "es5",
+      "target": "ESNext",
       "lib": ["dom", "es2015"],
       "allowJs": true,
       "jsx": "react",
-      "module": "commonjs",
+      "module": "ESNext",
       "moduleResolution": "node",
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true
+      "forceConsistentCasingInFileNames": true,
     },
-    "include": ["src"]
+    "include": ["src"],
   }
   

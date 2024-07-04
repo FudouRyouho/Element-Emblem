@@ -1,12 +1,13 @@
-//src\modules\testing\ItemComponent.tsx
+//src\client\testing\ItemComponent.tsx
 import React, { useState } from "react";
-import { Equipment } from "../common/components/base/Equipment";
+import { Equipment } from "../components/base/Equipment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { UI, items, Stats } from "../common/components/icons";
+import { UI, items, Stats } from "../components/icons";
 import { CustomPopover } from "../tooltips/customPopover/custom-popover";
 import InventoryPopover from "../tooltips/customPopover/inventory-popover";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector  } from "react-redux";
 import { transferItem } from "../inventory/actions/inventory.actions";
+import { RootState } from '../state/store';
   
 interface IProps {
   equipment: Equipment;
@@ -18,15 +19,23 @@ const ItemComponent: React.FC<IProps> = ({ equipment, section, from }) => {
   const [showExtendedDetails, setShowExtendedDetails] = useState(false);
   const dispatch = useDispatch();
 
+  const fromInventory = useSelector((state: RootState) => state.inventory.inventories[from]);
+  const toInventory = useSelector((state: RootState) => state.inventory.inventories['Player']);
+
+
+
   const handleClick = () => {
     setShowExtendedDetails(!showExtendedDetails);
   };
   const BuyItem = () => {
-    dispatch(transferItem({ from: from, to: 'Player', section, item: equipment }));
+    dispatch(transferItem({ fromInventory, toInventory, item: equipment }));
     setShowExtendedDetails(!showExtendedDetails);
   };
+
   const SellItem = () => {
-    dispatch(transferItem({ from: 'Player', to: 'Shop', section, item: equipment }));
+    const playerInventory = useSelector((state: RootState) => state.inventory.inventories['Player']);
+    const shopInventory = useSelector((state: RootState) => state.inventory.inventories['Shop']);
+    dispatch(transferItem({ fromInventory: playerInventory, toInventory: shopInventory, item: equipment }));
     setShowExtendedDetails(!showExtendedDetails);
   };
 

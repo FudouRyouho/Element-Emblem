@@ -54,7 +54,7 @@ const savePlayerInventory = async (inventoryData) => {
     }
     return true;
   } catch (error) {
-    console.error("Error al guardar inventario del jugador:", error);
+    console.error("Error al guardar inventario:", error);
     return false;
   }
 };
@@ -70,28 +70,28 @@ const getPlayerInventory = async (id) => {
       request.onsuccess = (event) => {
         const inventory = event.target.result;
         if (inventory) {
-          console.log("Inventario del jugador encontrado en IndexedDB:", inventory);
+          console.log("Inventario encontrado en IndexedDB:", inventory);
           resolve(inventory);
         } else {
-          console.log("Inventario del jugador no encontrado en IndexedDB.");
+          console.log("Inventario no encontrado en IndexedDB.");
           const localInventory = JSON.parse(localStorage.getItem('playerInventory'));
           if (localInventory) {
-            console.log("Inventario del jugador encontrado en LocalStorage:", localInventory);
+            console.log("Inventario encontrado en LocalStorage:", localInventory);
             resolve(localInventory);
           } else {
-            console.log("Inventario del jugador no encontrado en LocalStorage.");
+            console.log("Inventario no encontrado en LocalStorage.");
             resolve(null);
           }
         }
       };
 
       request.onerror = (event) => {
-        console.error("Error al cargar inventario del jugador desde IndexedDB:", event.target.errorCode);
+        console.error("Error al cargar inventario desde IndexedDB:", event.target.errorCode);
         reject(event.target.errorCode);
       };
     });
   } catch (error) {
-    console.error("Error al cargar inventario del jugador:", error);
+    console.error("Error al cargar inventario:", error);
     return null;
   }
 };

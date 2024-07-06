@@ -1,5 +1,6 @@
 //src\client\inventory\state\inventory.state.ts
-import { generateShopItems } from "../../components/base/generate/Items/Equipment/testing/generateShopItems";
+import { generateShopEquipment,generateShopConsumable } from "../../components/base/generate/testing/generateShopItems";
+
 export interface IInventorySection {
   id: string;
   items: any[];
@@ -39,7 +40,6 @@ const generatePlayerInventory = (): IInventory => ({
       items: [],
       slotCount: 20,
     },
-    // Agrega más secciones según sea necesario
   },
 });
 const generateShopInventory = (): IInventory => ({
@@ -48,20 +48,19 @@ const generateShopInventory = (): IInventory => ({
   sections: {
     'Equipment': {
       id: 'equipment',
-      items: generateShopItems(5), // Genera ítems dinámicamente
+      items: generateShopEquipment(1),
       slotCount: 10,
     },
     'Materials': {
       id: 'materials',
-      items: generateShopItems(10),
+      items: generateShopEquipment(1),
       slotCount: 20,
     },
     'Consumables': {
       id: 'consumables',
-      items: generateShopItems(15),
+      items: generateShopConsumable(1),
       slotCount: 20,
     },
-    // Agrega más secciones según sea necesario
   },
 });
 
@@ -69,6 +68,5 @@ export const initialInventoryState: IInventoryState = {
   inventories: {
     'Player': generatePlayerInventory(),
     'Shop': generateShopInventory(),
-    // Agrega más inventarios según sea necesario
   },
 };

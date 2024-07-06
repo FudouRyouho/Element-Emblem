@@ -11,7 +11,7 @@ body {
   margin: 0 auto;
 }
 .inventory {
-  border: 1px solid white;
+  border: 1px solid #ffffff;
   background-color: var(--backgroundTransparent);
   padding: 10px;
   display: grid;
@@ -267,6 +267,7 @@ svg {
  .details .body .abilities-enhancers {
   border: 1px solid white;
   padding: 3px 3px 7px 3px;
+  margin: 2px;
 }
 
  .details .body .stats-elementalStats .stat .stat-body,
@@ -282,7 +283,7 @@ svg {
  .details .body .abilities-enhancers .abilities-enhancers-body {
   display: grid;
   grid-auto-columns: min-content min-content;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.5fr 0.5fr;
 }
 
  .details .body .stats-elementalStats .stat .stat-title,
@@ -360,8 +361,7 @@ svg {
 
  .details.extended {
   position: absolute;
-  top: 33%;
-  bottom: 33%;
+  top: 10%;
   left: 33%;
   right: 33%;
 z-index: 1;}
@@ -381,4 +381,8 @@ z-index: 1;}
   top: 0px;
   right: 0px;
   margin: 7px 4px 0px 0px;
-  position: absolute}
+  position: absolute;
+  pointer-events:all}
+
+  .details.extended .close:hover {
+color: blue;}

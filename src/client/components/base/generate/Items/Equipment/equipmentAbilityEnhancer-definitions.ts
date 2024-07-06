@@ -1,5 +1,5 @@
 //src\modules\common\components\base\generate\equipmentAbilityEnhancer-definitions.ts
-import { AbilityEnhancer } from "../Ability";
+import { AbilityEnhancer } from "../../../Ability";
 
 export const fireAbilityEnhancers: AbilityEnhancer[] = [
   { id: "fire-enhancer-1", name: "Inferno", description: "Increases fire damage", icon: 'fire' },

@@ -1,36 +1,40 @@
-//F:\Development\web\Game\RPG\Element rpg\src\modules\tooltips\customPopover\inventory-popover.tsx
-import React from "react";
-import { Equipment } from "../../../client/components/base/Equipment";
-import { UI, items, Stats } from "../../../client/components/icons";
+import React, { useState } from "react";
+import { isEquipment } from "../../components/base/Equipment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UI, items, Stats } from "../../components/icons";
+import { Items } from "../../components/base/generate/Items/items";
+import { isConsumables } from "../../components/base/Consumables";
 
 interface IProps {
-  equipment: Equipment;
+  item: Items;
+  type: "extended";
+  showExtendedDetails: boolean;
+  handleClick: () => void;
 }
 
-const InventoryPopover: React.FC<IProps> = ({ equipment }) => {
+export const ItemComponentDetails: React.FC<IProps> = ({
+  item,
+  type,
+  showExtendedDetails,
+  handleClick,
+}) => {
+  let additionalDetails: JSX.Element | null = null;
 
-  const { stats, elementalStats, uniqueAbilities, abilityEnhancers } =
-    equipment;
-    const statEntries = stats ? Object.entries(stats).filter(
-      ([key, value]) => value !== undefined
-    ) : [] ;
-  const statElementalEntries = elementalStats
-  ? Object.entries(elementalStats).filter(
-      ([key, value]) => value !== undefined
-    )
-  : [];
+  if (isEquipment(item)) {
+    const { stats, elementalStats, uniqueAbilities, abilityEnhancers } = item;
+    const statEntries = stats
+      ? Object.entries(stats).filter(([key, value]) => value !== undefined)
+      : [];
+    const statElementalEntries = elementalStats
+      ? Object.entries(elementalStats).filter(
+          ([key, value]) => value !== undefined
+        )
+      : [];
 
-  return (
-    <div className={`details ${equipment.rarity}`}>
-      <div className="body">
-        <div className="name">{equipment.name}</div>
-        <div className="type-rarity">
-          <div className="type">Type: {equipment.type}</div>
-          <div className={`rarity`}>{equipment.rarity}</div>
-        </div>
+    additionalDetails = (
+      <>
         <div className="stats-elementalStats">
-          {equipment.stats && (
+          {item.stats && (
             <div className="stat">
               <p className="stat-title">Stats</p>
               <div className="stat-body">
@@ -43,13 +47,18 @@ const InventoryPopover: React.FC<IProps> = ({ equipment }) => {
               </div>
             </div>
           )}
-          {equipment.elementalStats && (
+
+          {item.elementalStats && (
             <div className="elemental-stat">
               <p className="elemental-stat-title">Elemental Stats</p>
               <div className="elemental-stat-body">
                 {statElementalEntries.map(([key, value]) => (
                   <span className="attribute icon">
-                    <FontAwesomeIcon icon={Stats[key]} width={24} />
+                    <FontAwesomeIcon
+                      icon={Stats[key]}
+                      className={key}
+                      width={24}
+                    />
                     <p className="value">{value}</p>
                   </span>
                 ))}
@@ -57,7 +66,7 @@ const InventoryPopover: React.FC<IProps> = ({ equipment }) => {
             </div>
           )}
         </div>
-        {equipment.uniqueAbilities && (
+        {item.uniqueAbilities && (
           <div className="unique-abilities">
             <p className="unique-abilities-title">Unique Abilities</p>
             <div className="unique-abilities-body">
@@ -72,7 +81,8 @@ const InventoryPopover: React.FC<IProps> = ({ equipment }) => {
             </div>
           </div>
         )}
-        {equipment.abilityEnhancers && (
+
+        {item.abilityEnhancers && (
           <div className="abilities-enhancers">
             <p className="abilities-enhancers-title">Abilities Enhancers</p>
             <div className="abilities-enhancers-body">
@@ -87,9 +97,38 @@ const InventoryPopover: React.FC<IProps> = ({ equipment }) => {
             </div>
           </div>
         )}
+      </>
+    );
+  } else if (isConsumables(item)) {
+    const { effect, description } = item;
+
+    additionalDetails = (
+      <>
+        <div className="effect">{effect}</div>
+        <div className="description">{description}</div>
+      </>
+    );
+  }
+
+  return (
+    <div className={`details ${type}`}>
+      <div className="background" onClick={handleClick}></div>
+      <div className={`${item.rarity}`}>
+        <FontAwesomeIcon
+          className="close"
+          icon={UI["close"]}
+          width={14}
+          onClick={handleClick}
+        />
+        <div className="body">
+          <div className="name">{item.name}</div>
+          <div className="type-rarity">
+            <div className="type">Type: {item.type}</div>
+            <div className={`rarity`}>{item.rarity}</div>
+          </div>
+          <div>{additionalDetails}</div>
+        </div>
       </div>
     </div>
   );
 };
-
-export default InventoryPopover;

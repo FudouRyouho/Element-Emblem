@@ -1,14 +1,11 @@
 //src\modules\common\components\base\Equipment.ts
 import { Stats, ElementalStats } from "./Stats";
 import { UniqueAbility, AbilityEnhancer } from "./Ability";
+import { Items } from "./generate/Items/items";
 
-export interface Equipment {
-    id: string;
-    name: string;
-    type: string;
+export interface Equipment extends Items {
+    itemType: 'Equipment';
     stats: Stats;
-    rarity: string;
-    icon: string;
     elementalStats?: ElementalStats;
   uniqueAbilities?: UniqueAbility[];
   abilityEnhancers?: AbilityEnhancer[];
@@ -63,3 +60,5 @@ export interface CelestialEquipment extends Equipment {
     uniqueAbilities: UniqueAbility[];
     abilityEnhancers: AbilityEnhancer[];
 }
+
+export const isEquipment = (item: Items): item is Equipment => item.itemType === 'Equipment';

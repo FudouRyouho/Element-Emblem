@@ -17,12 +17,13 @@ import { getRandomEquipmentType } from "./equipmentTypes";
 
 const elements = ["fire", "water", "wind", "earth"];
 
-export const generateEquipment = (rarity: string): Equipment => {
+export const equipmentGenerator = (rarity: string): Equipment => {
   const elementType = elements[Math.floor(Math.random() * elements.length)];
   const { type, icon } = getRandomEquipmentType();
   const baseEquipment: Equipment = {
+    itemType: 'Equipment',
     id: Math.random().toString(36).substr(2, 9),
-    name: `Item ${rarity}`,
+    name: `${type} ${rarity}`,
     type: type,
     stats: generateStats(1, 2),
     rarity,

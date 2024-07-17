@@ -21,9 +21,20 @@ export const close: IconDefinition;
 export const fire: IconDefinition;
 export const water: IconDefinition;
 
-
-import { IconDefinition, IconLookup, IconName, IconPrefix, IconPack } from '@fortawesome/fontawesome-common-types';
-export { IconDefinition, IconLookup, IconName, IconPrefix, IconPack } from '@fortawesome/fontawesome-common-types';
+import {
+  IconDefinition,
+  IconLookup,
+  IconName,
+  IconPrefix,
+  IconPack,
+} from "@fortawesome/fontawesome-common-types";
+export {
+  IconDefinition,
+  IconLookup,
+  IconName,
+  IconPrefix,
+  IconPack,
+} from "@fortawesome/fontawesome-common-types";
 export const prefix: IconPrefix;
 export const items: IconPack;
 export const UI: IconPack;

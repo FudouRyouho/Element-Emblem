@@ -1,26 +1,26 @@
 //src\modules\common\components\base\Stats.ts
 export interface Stats {
-  attack?: number;//done
+  attack?: number; //done
   attackPercentage?: number;
-  attackSpeed?: number;//done
+  attackSpeed?: number; //done
   attackSpeedPercentage?: number;
-  defense?: number;//done
+  defense?: number; //done
   defensePercentage?: number;
-  health?: number;//done
+  health?: number; //done
   healthPercentage?: number;
-  criticalHit?: number;//done
+  criticalHit?: number; //done
   criticalHitPercentage?: number;
-  criticalHitChance?: number;//done
+  criticalHitChance?: number; //done
   criticalHitChancePercentage?: number;
-  evasion?: number;//done
+  evasion?: number; //done
   evasionPercentage?: number;
-  damageBlock?: number;//done
+  damageBlock?: number; //done
   damageBlockPercentage?: number;
-  armorPenetration?: number;//done
+  armorPenetration?: number; //done
   armorPenetrationPercentage?: number;
-  healthRegeneration?: number;//done
+  healthRegeneration?: number; //done
   healthRegenerationPercentage?: number;
-  movementSpeed?: number;//done
+  movementSpeed?: number; //done
   movementSpeedPercentage?: number;
 }
 
@@ -41,5 +41,4 @@ export interface ElementalStats {
   earthAttackPercentage?: number;
   earthDefense?: number;
   earthDefensePercentage?: number;
-
 }

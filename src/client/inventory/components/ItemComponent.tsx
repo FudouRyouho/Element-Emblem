@@ -13,67 +13,63 @@ import { Items } from "../../components/base/generate/Items/items";
 import { ItemComponentDetails } from "../utils/itemComponent.details";
 
 interface IProps {
-  ItemsType: Items;
+  item: Items;
   section: string;
   from: string;
 }
 
-const ItemComponent: React.FC<IProps> = ({ ItemsType, section, from }) => {
-  console.log("ItemsType", ItemsType);
+const ItemComponent: React.FC<IProps> = ({ item, section, from }) => {
+  //console.log("ItemsType", item);
 
   const [showExtendedDetails, setShowExtendedDetails] = useState(false);
   const dispatch = useDispatch();
 
   const fromInventory = useSelector(
-    (state: RootState) => state.inventory.inventories[from]
+    (state: RootState) => state.inventory.inventories["Shop"]
   );
   const toInventory = useSelector(
     (state: RootState) => state.inventory.inventories["Player"]
   );
-
-  const handleClick = () => {
+  const BuyItem = () => {
+    dispatch(transferItem({ fromInventory, toInventory, item: item }));
     setShowExtendedDetails(!showExtendedDetails);
   };
-  const BuyItem = () => {
-    dispatch(transferItem({ fromInventory, toInventory, item: ItemsType }));
+  const handleClick = () => {
     setShowExtendedDetails(!showExtendedDetails);
   };
 
   const SellItem = () => {
-    const playerInventory = useSelector(
-      (state: RootState) => state.inventory.inventories["Player"]
-    );
-    const shopInventory = useSelector(
-      (state: RootState) => state.inventory.inventories["Shop"]
-    );
     dispatch(
       transferItem({
-        fromInventory: playerInventory,
-        toInventory: shopInventory,
-        item: ItemsType,
+        fromInventory,
+        toInventory,
+        item: item,
       })
     );
     setShowExtendedDetails(!showExtendedDetails);
   };
 
   return (
-    <CustomPopover enabled placement="bottom-start">
-      <div className={`item ${ItemsType.rarity}`}>
+    <CustomPopover
+      enabled={!showExtendedDetails}
+      placement="bottom-start"
+      popover={<InventoryPopover item={item} />}
+    >
+      <div className={`item ${item.rarity}`}>
         <div className="icon" onClick={handleClick}>
-          <FontAwesomeIcon
-            icon={items[ItemsType.icon]}
-            width={64}
-            height={128}
-          />
+          <FontAwesomeIcon icon={items[item.icon]} width={64} height={128} />
         </div>
 
         <>
           {showExtendedDetails && (
             <ItemComponentDetails
-              item={ItemsType}
+              item={item}
+              from={from}
               type="extended"
               showExtendedDetails={showExtendedDetails}
               handleClick={handleClick}
+              BuyItem={BuyItem}
+              SellItem={SellItem}
             />
           )}
         </>

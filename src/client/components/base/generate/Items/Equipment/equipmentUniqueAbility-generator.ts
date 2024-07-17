@@ -1,9 +1,18 @@
 // equipmentUniqueAbility-generator.ts
-import { UniqueAbility } from "../../../Ability";
-import { fireAbilities, waterAbilities, windAbilities, earthAbilities } from "./equipmentUniqueAbility-definitions";
+import { Ability } from "../../../Ability";
+import {
+  fireAbilities,
+  waterAbilities,
+  windAbilities,
+  earthAbilities,
+} from "./equipmentUniqueAbility-definitions";
 
-export const generateUniqueAbilities = (minStats: number, maxStats: number, elementType: string): UniqueAbility[] => {
-  let abilities: UniqueAbility[];
+export const generateUniqueAbilities = (
+  minStats: number,
+  maxStats: number,
+  elementType: string
+): (Ability)[] => {
+  let abilities: (Ability)[];
 
   switch (elementType) {
     case "fire":
@@ -22,7 +31,8 @@ export const generateUniqueAbilities = (minStats: number, maxStats: number, elem
       throw new Error(`Unknown element type: ${elementType}`);
   }
 
-  const numberOfAbilities = Math.floor(Math.random() * (maxStats - minStats + 1)) + minStats;
+  const numberOfAbilities =
+    Math.floor(Math.random() * (maxStats - minStats + 1)) + minStats;
   const shuffledAbilities = abilities.sort(() => 0.5 - Math.random());
   return shuffledAbilities.slice(0, numberOfAbilities);
 };

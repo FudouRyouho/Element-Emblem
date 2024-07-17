@@ -86,8 +86,8 @@ var icons = {
 };
 
 
-export { items as  items};
-export { Stats as  Stats};
+export { items as items };
+export { Stats as Stats };
 
 export { icons as UI, close, fire, water };
 

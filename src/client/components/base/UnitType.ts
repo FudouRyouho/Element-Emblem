@@ -1,4 +1,4 @@
 export interface UnitType {
-    playable: boolean;
-    race?: string;
-  }
+  playable: boolean;
+  race?: string;
+}

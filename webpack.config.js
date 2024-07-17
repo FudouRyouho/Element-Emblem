@@ -25,7 +25,7 @@ export default {
         test: /\.scss$/,
         use: [
           'style-loader',
-          'css-loader', 
+          'css-loader',
           'sass-loader'
         ],
         exclude: /node_modules/,
@@ -45,6 +45,12 @@ export default {
     },
     compress: true,
     port: 9000,
+    watchFiles: {
+      paths: ['src/**/*', 'public/**/*'],
+      options: {
+        ignored: /node_modules|.*\.sys/,
+      },
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

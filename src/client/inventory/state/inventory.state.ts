@@ -1,5 +1,8 @@
 //src\client\inventory\state\inventory.state.ts
-import { generateShopEquipment,generateShopConsumable } from "../../components/base/generate/testing/generateShopItems";
+import {
+  generateShopEquipment,
+  generateShopConsumable,
+} from "../../components/base/generate/testing/generateShopItems";
 
 export interface IInventorySection {
   id: string;
@@ -22,42 +25,42 @@ export interface IInventoryState {
 }
 
 const generatePlayerInventory = (): IInventory => ({
-  id: 'Player',
+  id: "Player",
   save: true,
   sections: {
-    'Equipment': {
-      id: 'equipment',
+    Equipment: {
+      id: "equipment",
       items: [],
       slotCount: 20,
     },
-    'Materials': {
-      id: 'materials',
+    Materials: {
+      id: "materials",
       items: [],
       slotCount: 20,
     },
-    'Consumables': {
-      id: 'consumables',
+    Consumables: {
+      id: "consumables",
       items: [],
       slotCount: 20,
     },
   },
 });
 const generateShopInventory = (): IInventory => ({
-  id: 'Shop',
+  id: "Shop",
   save: false,
   sections: {
-    'Equipment': {
-      id: 'equipment',
-      items: generateShopEquipment(1),
+    Equipment: {
+      id: "equipment",
+      items: generateShopEquipment(10),
       slotCount: 10,
     },
-    'Materials': {
-      id: 'materials',
+    Materials: {
+      id: "materials",
       items: generateShopEquipment(1),
       slotCount: 20,
     },
-    'Consumables': {
-      id: 'consumables',
+    Consumables: {
+      id: "consumables",
       items: generateShopConsumable(1),
       slotCount: 20,
     },
@@ -66,7 +69,7 @@ const generateShopInventory = (): IInventory => ({
 
 export const initialInventoryState: IInventoryState = {
   inventories: {
-    'Player': generatePlayerInventory(),
-    'Shop': generateShopInventory(),
+    Player: generatePlayerInventory(),
+    Shop: generateShopInventory(),
   },
 };

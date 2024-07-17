@@ -1,4 +1,4 @@
-//src\modules\common\components\base\generate\equipmentGenerator.ts
+//src\client\components\base\generate\Items\Equipment\equipmentGenerator.ts
 import {
   Equipment,
   MagicEquipment,
@@ -9,8 +9,10 @@ import {
   CelestialEquipment,
 } from "../../../Equipment";
 
-
-import { generateStats, generateElementalStats } from "./equipmentStats-generator";
+import {
+  generateStats,
+  generateElementalStats,
+} from "./equipmentStats-generator";
 import { generateUniqueAbilities } from "./equipmentUniqueAbility-generator";
 import { generateAbilityEnhancers } from "./equipmentAbilityEnhancer-generator";
 import { getRandomEquipmentType } from "./equipmentTypes";
@@ -21,7 +23,7 @@ export const equipmentGenerator = (rarity: string): Equipment => {
   const elementType = elements[Math.floor(Math.random() * elements.length)];
   const { type, icon } = getRandomEquipmentType();
   const baseEquipment: Equipment = {
-    itemType: 'Equipment',
+    itemType: "Equipment",
     id: Math.random().toString(36).substr(2, 9),
     name: `${type} ${rarity}`,
     type: type,

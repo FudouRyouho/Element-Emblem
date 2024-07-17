@@ -1,10 +1,20 @@
 //src\modules\common\components\base\generate\equipmentStats-generator.ts
 import { Stats, ElementalStats } from "../../../Stats";
-import { statDefinitions ,ElementalStatsDefinition,fireStatsDefinition,waterStatsDefinition,windStatsDefinition,earthStatsDefinition } from "./equipmentStats-definitions";
+import {
+  statDefinitions,
+  ElementalStatsDefinition,
+  fireStatsDefinition,
+  waterStatsDefinition,
+  windStatsDefinition,
+  earthStatsDefinition,
+} from "./equipmentStats-definitions";
 
 export const generateStats = (minStats: number, maxStats: number): Stats => {
-  const numberOfStats = Math.floor(Math.random() * (maxStats - minStats + 1)) + minStats;
-  const selectedStats = statDefinitions.sort(() => 0.5 - Math.random()).slice(0, numberOfStats);
+  const numberOfStats =
+    Math.floor(Math.random() * (maxStats - minStats + 1)) + minStats;
+  const selectedStats = statDefinitions
+    .sort(() => 0.5 - Math.random())
+    .slice(0, numberOfStats);
 
   const stats: Stats = {};
   selectedStats.forEach((stat) => {
@@ -14,7 +24,11 @@ export const generateStats = (minStats: number, maxStats: number): Stats => {
   return stats;
 };
 
-export const generateElementalStats = (minStats: number, maxStats: number, elementType: string): ElementalStats => {
+export const generateElementalStats = (
+  minStats: number,
+  maxStats: number,
+  elementType: string
+): ElementalStats => {
   let elementalStatsDefinition: ElementalStatsDefinition[];
 
   switch (elementType) {
@@ -34,8 +48,11 @@ export const generateElementalStats = (minStats: number, maxStats: number, eleme
       throw new Error(`Unknown element type: ${elementType}`);
   }
 
-  const numberOfStats = Math.floor(Math.random() * (maxStats - minStats + 1)) + minStats;
-  const selectedStats = elementalStatsDefinition.sort(() => 0.5 - Math.random()).slice(0, numberOfStats);
+  const numberOfStats =
+    Math.floor(Math.random() * (maxStats - minStats + 1)) + minStats;
+  const selectedStats = elementalStatsDefinition
+    .sort(() => 0.5 - Math.random())
+    .slice(0, numberOfStats);
 
   const elementalstats: ElementalStats = {};
   selectedStats.forEach((stat) => {

@@ -32,7 +32,7 @@ const savePlayerInventory = async (inventoryData) => {
       console.log(`El inventario [${inventoryData.id}] no requiere guardado.`);
       return false;
     }
-    
+
 
     const transaction = db.transaction('playerInventories', 'readwrite');
     const objectStore = transaction.objectStore('playerInventories');

@@ -1,14 +1,14 @@
 //src\client\inventory\actions\inventory.actions.ts
 import { createAction } from "@reduxjs/toolkit";
-import { IInventory } from "../state/inventory.state";
+import { InventoryInterface } from "../../components/Unit/InventoryInterface";
 
 interface TransferItemPayload {
-  fromInventory: IInventory;
-  toInventory: IInventory;
+  fromInventory: InventoryInterface;
+  toInventory: InventoryInterface;
   item: any;
 }
 
-export const updateInventory = createAction<IInventory>(
+export const updateInventory = createAction<InventoryInterface>(
   "inventory/updateInventory"
 );
 export const transferItem = createAction<TransferItemPayload>(

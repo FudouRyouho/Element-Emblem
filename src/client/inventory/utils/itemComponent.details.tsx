@@ -1,12 +1,12 @@
 import React from "react";
-import { isEquipment } from "../../components/base/Equipment";
+import { isEquipment } from "../../components/base/Interface/EquipmentInterface";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UI, Stats } from "../../components/icons";
-import { Items } from "../../components/base/generate/Items/items";
-import { isConsumables } from "../../components/base/Consumables";
+import { ItemsInterface } from "../../components/base/Interface/ItemsInterface";
+import { isConsumables } from "../../components/base/Interface/ConsumablesInterface";
 
 interface IProps {
-  item: Items;
+  item: ItemsInterface;
   from?: string;
   type: "extended";
   popover?: boolean;

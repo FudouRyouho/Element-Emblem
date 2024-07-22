@@ -1,4 +1,4 @@
-export interface Runes {
+export interface RunesInterface {
   id: string;
   name: string;
   type: string;

@@ -1,5 +1,5 @@
 // equipmentUniqueAbility-generator.ts
-import { Ability } from "../../../Ability";
+import { AbilityInterface } from "../../../Interface/AbilityInterface";
 import {
   fireAbilities,
   waterAbilities,
@@ -11,8 +11,8 @@ export const generateUniqueAbilities = (
   minStats: number,
   maxStats: number,
   elementType: string
-): (Ability)[] => {
-  let abilities: (Ability)[];
+): (AbilityInterface)[] => {
+  let abilities: (AbilityInterface)[];
 
   switch (elementType) {
     case "fire":

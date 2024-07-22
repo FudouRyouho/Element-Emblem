@@ -1,4 +1,4 @@
-import { AbilityEnhancer } from "../../../Ability";
+import { AbilityEnhancerInterface } from "../../../Interface/AbilityInterface";
 import {
   fireAbilityEnhancers,
   waterAbilityEnhancers,
@@ -10,8 +10,8 @@ export const generateAbilityEnhancers = (
   minStats: number,
   maxStats: number,
   elementType: string
-): AbilityEnhancer[] => {
-  let abilities: AbilityEnhancer[];
+): AbilityEnhancerInterface[] => {
+  let abilities: AbilityEnhancerInterface[];
   switch (elementType) {
     case "fire":
       abilities = fireAbilityEnhancers;

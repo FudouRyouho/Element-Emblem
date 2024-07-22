@@ -1,5 +1,5 @@
-import { Equipment } from "../../Equipment";
-import { Consumables } from "../../Consumables";
+import { EquipmentInterface } from "../../Interface/EquipmentInterface";
+import { ConsumablesInterface } from "../../Interface/ConsumablesInterface";
 import { equipmentGenerator } from "../Items/Equipment/equipmentGenerator";
 import { consumableGenerator } from "../Items/Consumables/consumablesGenerator";
 
@@ -15,13 +15,13 @@ const rarities = [
   "celestial",
 ];
 
-export const generateShopEquipment = (slotCount: number): Equipment[] => {
+export const generateShopEquipment = (slotCount: number): EquipmentInterface[] => {
   return Array.from({ length: slotCount }, () => {
     const rarity = rarities[Math.floor(Math.random() * rarities.length)];
     return equipmentGenerator(rarity);
   });
 };
-export const generateShopConsumable = (slotCount: number): Consumables[] => {
+export const generateShopConsumable = (slotCount: number): ConsumablesInterface[] => {
   return Array.from({ length: slotCount }, () => {
     const rarity = rarities[Math.floor(Math.random() * rarities.length)];
     return consumableGenerator(rarity);

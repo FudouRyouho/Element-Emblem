@@ -1,7 +1,7 @@
 //src\modules\common\components\base\generate\equipmentUniqueAbility-definitions.ts
-import { Ability } from "../../../Ability";
+import { AbilityInterface } from "../../../Interface/AbilityInterface";
 
-export const fireAbilities: Ability[] = [
+export const fireAbilities: AbilityInterface[] = [
   {
     id: "fire-ability-1",
     name: "Fireball",
@@ -75,7 +75,7 @@ export const fireAbilities: Ability[] = [
   },
 ];
 
-export const waterAbilities: Ability[] = [
+export const waterAbilities: AbilityInterface[] = [
   {
     id: "water-ability-1",
     name: "Healing Wave",
@@ -149,7 +149,7 @@ export const waterAbilities: Ability[] = [
   },
 ];
 
-export const windAbilities: Ability[] = [
+export const windAbilities: AbilityInterface[] = [
   {
     id: "wind-ability-1",
     name: "Gust",
@@ -222,7 +222,7 @@ export const windAbilities: Ability[] = [
   },
 ];
 
-export const earthAbilities: Ability[] = [
+export const earthAbilities: AbilityInterface[] = [
   {
     id: "earth-ability-1",
     name: "Stone Fist",

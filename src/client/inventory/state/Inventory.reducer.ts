@@ -2,7 +2,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { initialInventoryState } from "./inventory.state";
 import { updateInventory, transferItem } from "../actions/inventory.actions";
-import { savePlayerInventory } from "../../../server/services/inventoryService";
 import { isEqual } from "lodash";
 
 export const inventoryReducer = createReducer(
@@ -12,10 +11,11 @@ export const inventoryReducer = createReducer(
       .addCase(updateInventory, (state, action) => {
         const { id } = action.payload;
         console.log("updateInventory (action.payload)", action.payload);
+        console.log(state.inventories)
         if (!isEqual(state.inventories[id], action.payload)) {
           state.inventories[id] = action.payload;
           console.log("Inventory update (action.payload):", { id });
-          savePlayerInventory(state.inventories[id]);
+//          savePlayerInventory(state.inventories[id]);
         }
       })
       .addCase(transferItem, (state, action) => {
@@ -24,7 +24,6 @@ export const inventoryReducer = createReducer(
         console.log("fromInventory", fromInventory);
         const toInventoryState = state.inventories[toInventory.id];
         console.log("toInventory", toInventory);
-
         if (fromInventoryState && toInventoryState) {
           let itemTransferred = false;
           for (const sectionKey in fromInventory.sections) {
@@ -42,19 +41,19 @@ export const inventoryReducer = createReducer(
           if (itemTransferred) {
             state.inventories[fromInventory.id] = { ...fromInventoryState };
             state.inventories[toInventory.id] = { ...toInventoryState };
-            savePlayerInventory(state.inventories[fromInventory.id]);
-            savePlayerInventory(state.inventories[toInventory.id]);
+//            savePlayerInventory(state.inventories[fromInventory.id]);
+//            savePlayerInventory(state.inventories[toInventory.id]);
             console.log(
               "itemTransferred",
               state.inventories[fromInventory.id],
               "|",
               state.inventories[toInventory.id]
-            );
+           );
           } else {
             console.log("Item not found in fromInventory.");
           }
         } else {
-          console.log("Transfer failed. Inventories not found or invalid.");
+         console.log("Transfer failed. Inventories not found or invalid.");
         }
       });
   }

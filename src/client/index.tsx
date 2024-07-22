@@ -8,21 +8,13 @@ import "./styles/details.scss";
 //import "./styles/test.scss";
 import "./styles/btn.scss";
 import Inventory from "../client/inventory/components/Inventory";
+import MainMenu from "./layout/components/Layout.MainMenu";
 
 const App: React.FC = () => {
   return (
-    <div>
-      <Inventory
-        id="Shop"
-        save={false}
-        sections={["Equipment", "Materials", "Consumables"]}
-      />
-      <Inventory
-        id="Player"
-        save={true}
-        sections={["Equipment", "Materials", "Consumables", "Runes"]}
-      />
-    </div>
+    <>
+      <MainMenu />
+    </>
   );
 };
 

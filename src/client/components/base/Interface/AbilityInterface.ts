@@ -1,5 +1,5 @@
 //src\client\components\base\Ability.ts
-export interface Ability {
+export interface AbilityInterface {
   id: string;
   name: string;
   abilityIs: 'active' | 'passive'
@@ -10,7 +10,7 @@ export interface Ability {
   duration?: number;
   Area?: number;
 }
-export interface AbilityEnhancer {
+export interface AbilityEnhancerInterface {
   id: string;
   name: string;
   description: string;

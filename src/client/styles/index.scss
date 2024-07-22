@@ -242,21 +242,36 @@ svg {
 .inventory-slot:hover {
   border: 1px solid blue;
 }
-.icon{
+.icon {
   padding: 5px;
 }
-[class*='grid-Col-']{
-  grid-template-columns: minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) minmax(min-content, 0.8fr);
+[class*="grid-Col-"] {
+  grid-template-columns: minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) minmax(
+      min-content,
+      0.8fr
+    ) minmax(min-content, 0.8fr);
   display: grid;
-  grid-gap: 5px;}
-  .grid-Col-2 {
-    grid-template-columns: minmax(min-content, 0.8fr) minmax(min-content, 0.8fr);
-  
-  }
-  .grid-Col-3 {
-    grid-template-columns: minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) ;
-  }
-  .grid-Col-5,
-  .grid-Col-6 {
-    grid-template-columns: minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) ;
-  }
+  grid-gap: 5px;
+}
+.grid-Col-2 {
+  grid-template-columns: minmax(min-content, 0.8fr) minmax(min-content, 0.8fr);
+}
+.grid-Col-3 {
+  grid-template-columns: minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) minmax(
+      min-content,
+      0.8fr
+    );
+}
+.grid-Col-5,
+.grid-Col-6 {
+  grid-template-columns: minmax(min-content, 0.8fr) minmax(min-content, 0.8fr) minmax(
+      min-content,
+      0.8fr
+    );
+}
+
+.layout {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

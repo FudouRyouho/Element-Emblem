@@ -1,13 +1,7 @@
 //src\client\components\base\generate\Items\Equipment\equipmentGenerator.ts
 import {
-  Equipment,
-  MagicEquipment,
-  EpicEquipment,
-  LegendaryEquipment,
-  MysticEquipment,
-  DivineEquipment,
-  CelestialEquipment,
-} from "../../../Equipment";
+  EquipmentInterface,
+} from "../../../Interface/EquipmentInterface";
 
 import {
   generateStats,
@@ -19,10 +13,10 @@ import { getRandomEquipmentType } from "./equipmentTypes";
 
 const elements = ["fire", "water", "wind", "earth"];
 
-export const equipmentGenerator = (rarity: string): Equipment => {
+export const equipmentGenerator = (rarity: string): EquipmentInterface => {
   const elementType = elements[Math.floor(Math.random() * elements.length)];
   const { type, icon } = getRandomEquipmentType();
-  const baseEquipment: Equipment = {
+  const baseEquipment: EquipmentInterface = {
     itemType: "Equipment",
     id: Math.random().toString(36).substr(2, 9),
     name: `${type} ${rarity}`,
@@ -54,7 +48,7 @@ export const equipmentGenerator = (rarity: string): Equipment => {
         stats: generateStats(3, 4),
         elementalStats: generateElementalStats(1, 1, elementType),
         uniqueAbilities: generateUniqueAbilities(1, 2, elementType),
-      } as MagicEquipment;
+      };
 
     case "epic":
       return {
@@ -62,7 +56,7 @@ export const equipmentGenerator = (rarity: string): Equipment => {
         stats: generateStats(4, 5),
         elementalStats: generateElementalStats(1, 2, elementType),
         uniqueAbilities: generateUniqueAbilities(2, 2, elementType),
-      } as EpicEquipment;
+      }
 
     case "legendary":
       return {
@@ -70,7 +64,7 @@ export const equipmentGenerator = (rarity: string): Equipment => {
         stats: generateStats(5, 5),
         elementalStats: generateElementalStats(2, 2, elementType),
         uniqueAbilities: generateUniqueAbilities(2, 2, elementType),
-      } as LegendaryEquipment;
+      };
 
     case "mystic":
       return {
@@ -79,7 +73,7 @@ export const equipmentGenerator = (rarity: string): Equipment => {
         elementalStats: generateElementalStats(2, 3, elementType),
         uniqueAbilities: generateUniqueAbilities(3, 3, elementType),
         abilityEnhancers: generateAbilityEnhancers(1, 1, elementType),
-      } as MysticEquipment;
+      };
 
     case "divine":
       return {
@@ -88,7 +82,7 @@ export const equipmentGenerator = (rarity: string): Equipment => {
         elementalStats: generateElementalStats(3, 3, elementType),
         uniqueAbilities: generateUniqueAbilities(3, 3, elementType),
         abilityEnhancers: generateAbilityEnhancers(1, 2, elementType),
-      } as DivineEquipment;
+      };
 
     case "celestial":
       return {
@@ -97,7 +91,7 @@ export const equipmentGenerator = (rarity: string): Equipment => {
         elementalStats: generateElementalStats(4, 4, elementType),
         uniqueAbilities: generateUniqueAbilities(4, 4, elementType),
         abilityEnhancers: generateAbilityEnhancers(2, 2, elementType),
-      } as CelestialEquipment;
+      };
 
     default:
       throw new Error(`Unknown rarity: ${rarity}`);

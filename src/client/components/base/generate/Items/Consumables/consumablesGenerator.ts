@@ -1,7 +1,7 @@
-import { Consumables } from "../../../Consumables";
+import { ConsumablesInterface } from "../../../Interface/ConsumablesInterface";
 
-export const consumableGenerator = (rarity: string): Consumables => {
-  const baseConsumables: Consumables = {
+export const consumableGenerator = (rarity: string): ConsumablesInterface => {
+  const baseConsumables: ConsumablesInterface = {
     itemType: "Consumables",
     id: `${Math.random().toString(36).substr(2, 9)}`,
     name: `Potion ${rarity}`,

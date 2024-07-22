@@ -1,6 +1,5 @@
 //src\client\testing\ItemComponent.tsx
 import React, { useState } from "react";
-import { isEquipment } from "../../components/base/Equipment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UI, items, Stats } from "../../components/icons";
 import { CustomPopover } from "../../tooltips/customPopover/custom-popover";
@@ -8,27 +7,28 @@ import InventoryPopover from "../../tooltips/customPopover/inventory-popover";
 import { useDispatch, useSelector } from "react-redux";
 import { transferItem } from "../actions/inventory.actions";
 import { RootState } from "../../state/store";
-import { Items } from "../../components/base/generate/Items/items";
-
+import { ItemsInterface } from "../../components/base/Interface/ItemsInterface";
+import { saveGameInterface } from "../../components/saveGame/saveGameInterface";
 import { ItemComponentDetails } from "../utils/itemComponent.details";
 
 interface IProps {
-  item: Items;
+  idSave: saveGameInterface;
+  item: ItemsInterface;
   section: string;
   from: string;
 }
 
-const ItemComponent: React.FC<IProps> = ({ item, section, from }) => {
+const ItemComponent: React.FC<IProps> = ({ idSave,item, section, from }) => {
   //console.log("ItemsType", item);
 
   const [showExtendedDetails, setShowExtendedDetails] = useState(false);
   const dispatch = useDispatch();
 
   const fromInventory = useSelector(
-    (state: RootState) => state.inventory.inventories["Shop"]
+    (state: RootState) => state.saveGame.saves[idSave.id].unit[0].inventory
   );
   const toInventory = useSelector(
-    (state: RootState) => state.inventory.inventories["Player"]
+    (state: RootState) => state.saveGame.saves[idSave.id].unit[0].inventory
   );
   const BuyItem = () => {
     dispatch(transferItem({ fromInventory, toInventory, item: item }));

@@ -1,5 +1,5 @@
 //src\modules\common\components\base\generate\equipmentStats-generator.ts
-import { Stats, ElementalStats } from "../../../Stats";
+import { Stats, ElementalStats } from "../../../../Unit/Stats";
 
 export interface StatDefinition {
   key: keyof Stats;

@@ -1,22 +1,23 @@
 // src/components/InventorySlot.tsx
 import React from "react";
 import ItemComponent from "./ItemComponent";
-import { Equipment } from "../../components/base/Equipment";
-import { Items } from "../../components/base/generate/Items/items";
+import { ItemsInterface } from "../../components/base/Interface/ItemsInterface";
+import { saveGameInterface } from "../../components/saveGame/saveGameInterface";
 
 interface IProps {
+  idSave: saveGameInterface
   id: string;
-  item?: Items;
+  item?: ItemsInterface;
   from: string;
   setSection: string;
 }
 
-const InventorySlot: React.FC<IProps> = ({ id, item, from, setSection }) => {
+const InventorySlot: React.FC<IProps> = ({ idSave, id, item, from, setSection }) => {
   const itemType = item?.itemType;
   return (
     <div className={`inventory-slot ${item?.rarity}`} id={id}>
       {item ? (
-        <ItemComponent item={item} section={setSection} from={from} />
+        <ItemComponent idSave={idSave} item={item} section={setSection} from={from} />
       ) : (
         "Empty"
       )}

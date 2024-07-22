@@ -1,73 +1,18 @@
 //src\client\inventory\state\inventory.state.ts
-import {
-  generateShopEquipment,
-  generateShopConsumable,
-} from "../../components/base/generate/testing/generateShopItems";
+import { generatePlayerInventory, generateShopInventory } from "../../components/base/generate/inventory/inventoryGenerator";
 
-export interface IInventorySection {
-  id: string;
-  items: any[];
-  slotCount: number;
-}
+import { InventoryInterface } from "../../components/Unit/InventoryInterface";
 
-export interface IInventory {
-  save: boolean;
-  id: string;
-  sections: {
-    [key: string]: IInventorySection;
-  };
-}
 
-export interface IInventoryState {
+export interface InventoryState {
   inventories: {
-    [key: string]: IInventory;
+    [key: string]: InventoryInterface;
   };
 }
 
-const generatePlayerInventory = (): IInventory => ({
-  id: "Player",
-  save: true,
-  sections: {
-    Equipment: {
-      id: "equipment",
-      items: [],
-      slotCount: 20,
-    },
-    Materials: {
-      id: "materials",
-      items: [],
-      slotCount: 20,
-    },
-    Consumables: {
-      id: "consumables",
-      items: [],
-      slotCount: 20,
-    },
-  },
-});
-const generateShopInventory = (): IInventory => ({
-  id: "Shop",
-  save: false,
-  sections: {
-    Equipment: {
-      id: "equipment",
-      items: generateShopEquipment(10),
-      slotCount: 10,
-    },
-    Materials: {
-      id: "materials",
-      items: generateShopEquipment(1),
-      slotCount: 20,
-    },
-    Consumables: {
-      id: "consumables",
-      items: generateShopConsumable(1),
-      slotCount: 20,
-    },
-  },
-});
 
-export const initialInventoryState: IInventoryState = {
+
+export const initialInventoryState: InventoryState = {
   inventories: {
     Player: generatePlayerInventory(),
     Shop: generateShopInventory(),

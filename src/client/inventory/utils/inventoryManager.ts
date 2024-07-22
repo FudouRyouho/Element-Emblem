@@ -1,15 +1,12 @@
 //src\server\services\inventoryManager.ts
 
-import {
-  IInventory,
-  IInventorySection,
-} from "../../client/inventory/state/inventory.state";
 
+import { InventoryInterface, InventorySectionInterface } from "../../components/Unit/InventoryInterface";
 export const createInventory = (
   id: string,
   save: boolean,
   sections: string[]
-): IInventory => {
+): InventoryInterface => {
   return {
     id,
     save,
@@ -20,15 +17,15 @@ export const createInventory = (
         slotCount: 20,
       };
       return acc;
-    }, {} as { [key: string]: IInventorySection }),
+    }, {} as { [key: string]: InventorySectionInterface }),
   };
 };
 
 export const addItemToInventory = (
-  inventory: IInventory,
+  inventory: InventoryInterface,
   sectionId: string,
   item: any
-): IInventory => {
+): InventoryInterface => {
   if (inventory.sections[sectionId]) {
     return {
       ...inventory,

@@ -1,4 +1,4 @@
-export interface Materials {
+export interface MaterialsInterface {
   id: string;
   name: string;
   type: string;

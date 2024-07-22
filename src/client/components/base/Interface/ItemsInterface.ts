@@ -1,6 +1,6 @@
 //src\client\components\base\generate\Items\items.ts
 
-export interface Items {
+export interface ItemsInterface {
   itemType: "Equipment" | "Consumables";
   id: string;
   name: string;

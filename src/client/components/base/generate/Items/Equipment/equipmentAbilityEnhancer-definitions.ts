@@ -1,7 +1,7 @@
 //src\modules\common\components\base\generate\equipmentAbilityEnhancer-definitions.ts
-import { AbilityEnhancer } from "../../../Ability";
+import { AbilityEnhancerInterface } from "../../../Interface/AbilityInterface";
 
-export const fireAbilityEnhancers: AbilityEnhancer[] = [
+export const fireAbilityEnhancers: AbilityEnhancerInterface[] = [
   {
     id: "fire-enhancer-1",
     name: "Inferno",
@@ -66,7 +66,7 @@ export const fireAbilityEnhancers: AbilityEnhancer[] = [
   },
 ];
 
-export const waterAbilityEnhancers: AbilityEnhancer[] = [
+export const waterAbilityEnhancers: AbilityEnhancerInterface[] = [
   {
     id: "water-enhancer-1",
     name: "Tidal Wave",
@@ -131,7 +131,7 @@ export const waterAbilityEnhancers: AbilityEnhancer[] = [
   },
 ];
 
-export const windAbilityEnhancers: AbilityEnhancer[] = [
+export const windAbilityEnhancers: AbilityEnhancerInterface[] = [
   {
     id: "wind-enhancer-1",
     name: "Gale Force",
@@ -196,7 +196,7 @@ export const windAbilityEnhancers: AbilityEnhancer[] = [
   },
 ];
 
-export const earthAbilityEnhancers: AbilityEnhancer[] = [
+export const earthAbilityEnhancers: AbilityEnhancerInterface[] = [
   {
     id: "earth-enhancer-1",
     name: "Seismic Wave",

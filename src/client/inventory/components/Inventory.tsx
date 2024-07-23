@@ -5,7 +5,8 @@ import InventorySlot from "./inventory.slot";
 import { updateInventory } from "../actions/inventory.actions";
 import { RootState } from "../../state/store";
 import { cloneDeep } from "lodash";
-import { saveGameInterface } from '../../components/saveGame/saveGameInterface';
+import { saveGameInterface } from "../../components/saveGame/saveGameInterface";
+import { ButtonTemplate } from "../../layout/utils/buttons";
 
 interface IProps {
   idSave: saveGameInterface;
@@ -16,13 +17,13 @@ interface IProps {
 
 const Inventory: React.FC<IProps> = ({ idSave, id, save, sections }) => {
   //preload inventory in state and load DB
-  
+
   const dispatch = useDispatch();
   const inventory = useSelector(
     (state: RootState) => state.saveGame.saves[idSave.id].unit[0].inventory
   );
 
-  console.log(id, '||' ,inventory);
+  console.log(id, "||", inventory);
 
   const [sectionButton, setSectionButton] = useState("Equipment");
 
@@ -36,21 +37,23 @@ const Inventory: React.FC<IProps> = ({ idSave, id, save, sections }) => {
       <p>
         {id} - {sectionButton}
       </p>
-      <div className="inventory-tabs">
+      <div className="m-1
+      ">
         {sections.map((section, index) => (
-          <button
-            key={`${id}-tab-${index}`}
-            className={`btn ${section.toLowerCase()}`}
+          <ButtonTemplate
+            content={section}
+            color="gray"
             onClick={() => handleSetSection(section)}
-          >
-            {section}
-          </button>
+          />
         ))}
       </div>
-      <div id={id} className={`inventory ${id}`}>
+      <div
+        id={id}
+        className={`grid grid-cols-inventory bg-gray-800/40 p-10 border-2 border-white mx-12`}
+      >
         {inventory.sections[sectionButton]?.items.map((item, slotIndex) => (
           <InventorySlot
-          idSave={idSave}
+            idSave={idSave}
             key={`${id}-${sectionButton}-${slotIndex}`}
             id={`${id}-${sectionButton}-${slotIndex}`}
             item={item}

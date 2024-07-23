@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UI, Stats } from "../../components/icons";
 import { ItemsInterface } from "../../components/base/Interface/ItemsInterface";
 import { isConsumables } from "../../components/base/Interface/ConsumablesInterface";
+import { ButtonTemplate } from "../../layout/utils/buttons";
 
 interface IProps {
   item: ItemsInterface;
   from?: string;
-  type: "extended";
+  typeLayout: "extended";
   popover?: boolean;
   showExtendedDetails?: boolean;
   handleClick?: () => void;
@@ -19,7 +20,7 @@ interface IProps {
 export const ItemComponentDetails: React.FC<IProps> = ({
   item,
   from,
-  type,
+  typeLayout,
   popover = false,
   showExtendedDetails,
   handleClick,
@@ -44,14 +45,16 @@ export const ItemComponentDetails: React.FC<IProps> = ({
       <>
         <div className="grid-Col-2">
           {item.stats && (
-            <div className="container">
-              <p className="container-title">Stats</p>
-              <div className="container-body">
+            <div className="m-0.5 p-1 border-2 border-white">
+              <p className="mb-0 mt-5 mr-1 ml-5 text-xs text-center text-nowrap">
+                Stats
+              </p>
+              <div className="mb-0 mt-auto ml-0 mr-auto">
                 <div className={`grid-Col-${statGrid}`}>
                   {statEntries.map(([key, value]) => (
-                    <span className="attribute icon">
+                    <span className="flex flex-row items-stretch text-white border-2 border-white m-0.5">
                       <FontAwesomeIcon icon={Stats[key]} width={24} />
-                      <p className="value">{value}</p>
+                      <p className="m-0.5 mb-3 font-bold text-white">{value}</p>
                     </span>
                   ))}
                 </div>
@@ -59,18 +62,20 @@ export const ItemComponentDetails: React.FC<IProps> = ({
             </div>
           )}
           {item.elementalStats && (
-            <div className="container">
-              <p className="container-title">Elemental Stats</p>
-              <div className="container-body">
+            <div className="m-0.5 p-1 border-2 border-white">
+              <p className="mb-0 mt-5 mr-1 ml-5 text-xs text-center text-nowrap">
+                Elemental Stats
+              </p>
+              <div className="mb-0 mt-auto ml-0 mr-auto">
                 <div className={`grid-Col-${elementalStatGrid}`}>
                   {statElementalEntries.map(([key, value]) => (
-                    <span className="attribute icon">
+                    <span className="flex flex-row items-stretch text-white border-2 border-white m-0.5">
                       <FontAwesomeIcon
                         icon={Stats[key]}
                         className={key}
                         width={24}
                       />
-                      <p className="value">{value}</p>
+                      <p className="m-0.5 mb-3 font-bold text-white">{value}</p>
                     </span>
                   ))}
                 </div>
@@ -79,15 +84,17 @@ export const ItemComponentDetails: React.FC<IProps> = ({
           )}
         </div>
         {item.uniqueAbilities && (
-          <div className="container">
-            <p className="container-title">Unique Abilities</p>
+          <div className="m-0.5 p-1 border-2 border-white">
+            <p className="mb-0 mt-5 mr-1 ml-5 text-xs text-center text-nowrap">
+              Unique Abilities
+            </p>
             <div className="grid-Col-2">
               {uniqueAbilities &&
                 uniqueAbilities.map((ability) => (
-                  <div className="ability icon">
-                    <FontAwesomeIcon icon={UI[ability.icon]} width={24} />
-                    <div className="name">{ability.name}</div>
-                    <div className="description">{ability.description}</div>
+                  <div className="grid auto-cols-auto-2 grid-cols-1 grid-rows-1 gap-1 grid-areas-ability text-white border-2 border-white m-0.5">
+                    <FontAwesomeIcon className="m-1.5 grid-in-icon" icon={UI[ability.icon]} width={24} />
+                    <div className="m-1 mb-3 font-bold text-white grid-in-name text-xs">{ability.name}</div>
+                    <div className="m-1 mb-3 font-bold text-white text-xs grid-in-description">{ability.description}</div>
                   </div>
                 ))}
             </div>
@@ -95,15 +102,17 @@ export const ItemComponentDetails: React.FC<IProps> = ({
         )}
 
         {item.abilityEnhancers && (
-          <div className="container">
-            <p className="container-title">Abilities Enhancers</p>
+          <div className="m-0.5 p-1 border-2 border-white">
+            <p className="mb-0 mt-5 mr-1 ml-5 text-xs text-center text-nowrap">
+              Abilities Enhancers
+            </p>
             <div className="grid-Col-2">
               {abilityEnhancers &&
                 abilityEnhancers.map((ability) => (
-                  <div className="ability icon">
+                  <div className="grid auto-cols-auto-2 grid-cols-1 grid-rows-1 gap-1 grid-areas-ability text-white border-2 border-white m-0.5">
                     <FontAwesomeIcon icon={UI[ability.icon]} width={24} />
-                    <div className="name">{ability.name}</div>
-                    <div className="description">{ability.description}</div>
+                    <div className="m-1 mb-3 font-bold text-white grid-in-name text-xs">{ability.name}</div>
+                    <div className="m-1 mb-3 font-bold text-white text-xs grid-in-description">{ability.description}</div>
                   </div>
                 ))}
             </div>
@@ -123,25 +132,30 @@ export const ItemComponentDetails: React.FC<IProps> = ({
   }
 
   return (
-    <div className={`details ${type}`}>
-      {type === "extended" && !popover && (
-        <div className="background" onClick={handleClick} />
+    <div
+      className={`border-2 border-white bg-gray-800/40 m-1 h-max w-max pointer-events-auto absolute ${typeLayout}`}
+    >
+      {typeLayout === "extended" && !popover && (
+        <div
+          className="w-full h-full fixed inset-0 bg-gray-800/40 -z-1 border-none"
+          onClick={handleClick}
+        />
       )}
       <div className={`${item.rarity}`}>
         {!popover && (
           <FontAwesomeIcon
-            className="close"
+            className="top-0 right-0 absolute pointer-events-auto h-4 mt-2 mr-1 text-white hover:text-blue-500"
             icon={UI["close"]}
             width={14}
             onClick={handleClick}
           />
         )}
-        <div className="body">
-          <div className="name">{item.name}</div>
-          <div className="type-rarity">
-            <div className="type">Type: {item.type}</div>
-            <div className="type">
-              {type}
+        <div className="p-4">
+          <div className="text-center font-bold text-xl">{item.name}</div>
+          <div className="flex text-white text-sm">
+            <div className="text-xs font-bold">Type: {item.type}</div>
+            <div className="text-xs font-bold">
+              {typeLayout}
               {popover === true && " | popover"}
             </div>
             <div className={`rarity`}>{item.rarity}</div>
@@ -149,14 +163,20 @@ export const ItemComponentDetails: React.FC<IProps> = ({
           <div>{additionalDetails}</div>
         </div>
         {from === "Shop" && (
-          <button className={`btn ${type}`} onClick={BuyItem}>
-            Buy Item
-          </button>
+          <ButtonTemplate
+          content="Buy Item"
+          color="gray"
+          onClick={BuyItem}
+          customClass={`${typeLayout}`}
+          />
         )}
         {from === "Player" && (
-          <button className={`btn ${type}`} onClick={BuyItem}>
-            Sell Item
-          </button>
+          <ButtonTemplate
+          content="Sell Item"
+          color="gray"
+          onClick={BuyItem}
+          customClass={`${typeLayout}`}
+          />
         )}
       </div>
     </div>

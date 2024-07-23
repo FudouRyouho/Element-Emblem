@@ -1,10 +1,8 @@
-//webpack.config.js
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+//webpack.config.cjs
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
-export default {
+module.exports = {
   entry: './src/client/index.tsx',
   mode: 'development',
   output: {
@@ -34,8 +32,20 @@ export default {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader'
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  require('tailwindcss'),
+                  require('autoprefixer'),
+                ],
+              },
+            },
+          },
         ],
+        exclude: /node_modules/,
       },
     ],
   },

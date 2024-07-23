@@ -3,37 +3,64 @@ import React from "react";
 import NewGame from "./Layout.NewGame";
 import { useSectionSwitcher } from "../hooks/Layout.Hooks";
 import { Continue } from "./Layout.Continue";
-
-
+import { Loading } from "./Layout.Loanding";
+import { ButtonTemplate } from "../utils/buttons";
+import { useSetSelectedSave } from "../../components/saveGame/useSaveLoader";
 interface IProps {}
 
 const MainMenu: React.FC<IProps> = ({}) => {
   const { currentSection, switchSection } = useSectionSwitcher();
+  const { selectedSave, handleLoadGame } = useSetSelectedSave();
+
+
   return (
-    <div className="layout">
-      {currentSection === "Main Menu" && (
-        <>
-          Main Menu
-          <button className="btn" onClick={() => switchSection("Start Game")}>
-            Start Game
-          </button>
-          <button className="btn">Options</button>
-          <button className="btn">Codex</button>
+    <>
+      <div className="flex flex-col items-center size-max">
+        {currentSection === "Main Menu" && (
+          <>
+            <h1>Main Menu</h1>
+            <ButtonTemplate
+              content="Start Game"
+              color="gray"
+              onClick={() => switchSection("Start Game")}
+            />
+            <ButtonTemplate
+              content="Options"
+              color="gray"
+              onClick={() => switchSection("Options")}
+            />
+            <ButtonTemplate
+              content="Codex"
+              color="gray"
+              onClick={() => switchSection("Codex")}
+            />
           </>
-      )}
-      {currentSection === 'Start Game' && (
-        <>
-          Start Game
-          <button className="btn" onClick={() => switchSection('Continue')}>Continue</button>
-          <button className="btn" onClick={() => switchSection('New Game')}>New Game</button>
-          <button className="btn" onClick={() => switchSection('Main Menu')}>Back</button>
+        )}
+        {currentSection === "Start Game" && (
+          <>
+            <h1>Start Game</h1>
+            <ButtonTemplate
+              content="Continue"
+              color="gray"
+              onClick={() => switchSection("Continue")}
+            />
+            <ButtonTemplate
+              content="New Game"
+              color="gray"
+              onClick={() => switchSection("New Game")}
+            />
+            <ButtonTemplate
+              content="Back"
+              color="gray"
+              onClick={() => switchSection("Main Menu")}
+            />
           </>
-      )}
-      {currentSection === 'New Game' && (
-        <NewGame />
-      )}
-      {currentSection === 'Continue' && (<Continue/>)}
+        )}
       </div>
+      {currentSection === "New Game" && <NewGame />}
+      {(currentSection === "Continue" || currentSection === 'Loading') && <Continue />}
+      
+    </>
   );
 };
 

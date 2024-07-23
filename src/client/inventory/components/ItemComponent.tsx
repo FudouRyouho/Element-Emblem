@@ -56,7 +56,7 @@ const ItemComponent: React.FC<IProps> = ({ idSave,item, section, from }) => {
       popover={<InventoryPopover item={item} />}
     >
       <div className={`item ${item.rarity}`}>
-        <div className="icon" onClick={handleClick}>
+        <div className="p-1" onClick={handleClick}>
           <FontAwesomeIcon icon={items[item.icon]} width={64} height={128} />
         </div>
 
@@ -65,7 +65,7 @@ const ItemComponent: React.FC<IProps> = ({ idSave,item, section, from }) => {
             <ItemComponentDetails
               item={item}
               from={from}
-              type="extended"
+              typeLayout="extended"
               showExtendedDetails={showExtendedDetails}
               handleClick={handleClick}
               BuyItem={BuyItem}

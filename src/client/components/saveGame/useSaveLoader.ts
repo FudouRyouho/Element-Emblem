@@ -30,3 +30,20 @@ export const useSaveLoader = () => {
   }, [dispatch]);
   return loading;
 };
+
+export const useSetSelectedSave  = () => {
+  const [selectedSave, setSelectedSave] = useState<saveGameInterface | null>(
+    null
+  );
+
+  const handleLoadGame = (save: saveGameInterface) => {
+    setSelectedSave(save);
+  };
+
+  console.log(selectedSave)
+  return {
+    selectedSave,
+    setSelectedSave,
+    handleLoadGame,
+  };
+}

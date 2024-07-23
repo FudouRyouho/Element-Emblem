@@ -6,8 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open --config webpack.config.js",
-    "build": "webpack --config webpack.config.js"
+    "start": "webpack server --open --config webpack.config.cjs",
+    "build": "webpack --config webpack.config.cjs",
+    "build:css": "npx tailwindcss -i ./src/client/styles/tailwindcss/input.css -o ./src/client/styles/tailwindcss/output.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -17,12 +18,16 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.2.5",
+    "@savvywombat/tailwindcss-grid-areas": "^4.0.0",
     "@tippyjs/react": "^4.2.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
     "body-parser": "^1.20.2",
+    "cosmiconfig": "^9.0.0",
     "html-webpack-plugin": "^5.6.0",
     "lodash": "^4.17.21",
+    "postcss-loader": "^8.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-game-engine": "^1.2.0",
@@ -36,9 +41,11 @@
   "devDependencies": {
     "@types/lodash": "^4.17.6",
     "css-loader": "^7.1.2",
+    "postcss": "^8.4.39",
     "sass": "^1.77.6",
     "sass-loader": "^14.2.1",
     "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.6",
     "webpack": "^5.92.1"
   }
 }

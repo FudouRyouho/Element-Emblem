@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const InventoryPopover: React.FC<IProps> = ({ item }) => {
-  return <ItemComponentDetails item={item} type="extended" popover />;
+  return <ItemComponentDetails item={item} typeLayout="extended" popover />;
 };
 
 export default InventoryPopover;

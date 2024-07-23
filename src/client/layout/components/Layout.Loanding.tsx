@@ -3,6 +3,7 @@ import React from 'react';
 import { useSectionSwitcher } from "../hooks/Layout.Hooks";
 import Inventory from '../../inventory/components/Inventory';
 import { saveGameInterface } from '../../components/saveGame/saveGameInterface';
+import { ButtonTemplate } from '../utils/buttons';
 
 
 interface Iprops {
@@ -26,7 +27,11 @@ export const Loading: React.FC<Iprops> = ({ saveData }) => {
         save={true}
         sections={sections}
         />
-        <button className="btn" onClick={() => switchSection("Main Menu")}>Back</button>
+              <ButtonTemplate
+        content="Back"
+        color="gray"
+        onClick={() => switchSection("Continue")}
+      />
         </>
     );
 }

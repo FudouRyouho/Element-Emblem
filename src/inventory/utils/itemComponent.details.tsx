@@ -165,7 +165,7 @@ export const ItemComponentDetails: React.FC<IProps> = ({
         {from === "Shop" && (
           <ButtonTemplate
           content="Buy Item"
-          color="gray"
+          color="stone"
           onClick={BuyItem}
           customClass={`${typeLayout}`}
           />
@@ -173,7 +173,7 @@ export const ItemComponentDetails: React.FC<IProps> = ({
         {from === "Player" && (
           <ButtonTemplate
           content="Sell Item"
-          color="gray"
+          color="stone"
           onClick={BuyItem}
           customClass={`${typeLayout}`}
           />

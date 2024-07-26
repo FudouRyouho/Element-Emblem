@@ -43,7 +43,7 @@ export const Continue: React.FC<Iprops> = () => {
                 </div>
                 <ButtonTemplate
                   content="Load"
-                  color="gray"
+                  color="stone"
                   onClick={() => {
                     handleLoadGame(save);
                     switchSection('Loading');
@@ -55,7 +55,7 @@ export const Continue: React.FC<Iprops> = () => {
       </div>
       <ButtonTemplate
         content="Back"
-        color="gray"
+        color="stone"
         onClick={() => switchSection("Start Game")}
       />
     </>

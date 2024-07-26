@@ -3,15 +3,14 @@ import React from "react";
 import NewGame from "./Layout.NewGame";
 import { useSectionSwitcher } from "../hooks/Layout.Hooks";
 import { Continue } from "./Layout.Continue";
-import { Loading } from "./Layout.Loanding";
 import { ButtonTemplate } from "../utils/buttons";
 import { useSetSelectedSave } from "../../components/saveGame/useSaveLoader";
+import Testing from "./Layout.Testing";
 interface IProps {}
 
 const MainMenu: React.FC<IProps> = ({}) => {
   const { currentSection, switchSection } = useSectionSwitcher();
   const { selectedSave, handleLoadGame } = useSetSelectedSave();
-
 
   return (
     <>
@@ -21,18 +20,23 @@ const MainMenu: React.FC<IProps> = ({}) => {
             <h1>Main Menu</h1>
             <ButtonTemplate
               content="Start Game"
-              color="gray"
+              color="stone"
               onClick={() => switchSection("Start Game")}
             />
             <ButtonTemplate
               content="Options"
-              color="gray"
+              color="stone"
               onClick={() => switchSection("Options")}
             />
             <ButtonTemplate
               content="Codex"
-              color="gray"
+              color="stone"
               onClick={() => switchSection("Codex")}
+            />
+            <ButtonTemplate
+              content="Testing"
+              color="stone"
+              onClick={() => switchSection("Testing")}
             />
           </>
         )}
@@ -41,25 +45,27 @@ const MainMenu: React.FC<IProps> = ({}) => {
             <h1>Start Game</h1>
             <ButtonTemplate
               content="Continue"
-              color="gray"
+              color="stone"
               onClick={() => switchSection("Continue")}
             />
             <ButtonTemplate
               content="New Game"
-              color="gray"
+              color="stone"
               onClick={() => switchSection("New Game")}
             />
             <ButtonTemplate
               content="Back"
-              color="gray"
+              color="stone"
               onClick={() => switchSection("Main Menu")}
             />
           </>
         )}
       </div>
       {currentSection === "New Game" && <NewGame />}
-      {(currentSection === "Continue" || currentSection === 'Loading') && <Continue />}
-      
+      {(currentSection === "Continue" || currentSection === "Loading") && (
+        <Continue />
+      )}
+      {currentSection === "Testing" && <Testing />}
     </>
   );
 };

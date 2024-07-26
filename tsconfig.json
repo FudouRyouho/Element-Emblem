@@ -1,17 +1,11 @@
-//tsconfig.json
 {
-    "compilerOptions": {
-      "target": "ESNext",
-      "lib": ["dom", "es2015"],
-      "allowJs": true,
-      "jsx": "react",
-      "module": "ESNext",
-      "moduleResolution": "node",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
     },
-    "include": ["src"],
-  }
-  
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}

@@ -42,7 +42,7 @@ const Inventory: React.FC<IProps> = ({ idSave, id, save, sections }) => {
         {sections.map((section, index) => (
           <ButtonTemplate
             content={section}
-            color="gray"
+            color="stone"
             onClick={() => handleSetSection(section)}
           />
         ))}

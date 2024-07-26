@@ -29,7 +29,7 @@ export const Loading: React.FC<Iprops> = ({ saveData }) => {
         />
               <ButtonTemplate
         content="Back"
-        color="gray"
+        color="stone"
         onClick={() => switchSection("Continue")}
       />
         </>
